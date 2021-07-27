@@ -1,0 +1,24 @@
+<table class="table highlight">
+  <thead>
+    <tr>
+      <th scope="col">Tiny URL</th>
+      <th scope="col">Long URL</th>
+      <th scope="col">Shortened At</th>
+      <th scope="col">Visits Count</th>
+      <th scope="col">Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% urls.each do |url| %>
+      <tr>
+        <th scope="row"><a href="<%= url.token %>" target="_blank"><%= visit_url(url.token) %></a></th>
+        <td><a href="<%= url.long_url %>"><%= url.long_url %></a></td>
+        <td><%= url.created_at.strftime('%b %d, %Y') %></td>
+        <td><%= url.visits_count %></td>
+        <td>
+          <a href="<%= url_path(url.token) %>" style="font-size: 30px;">></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
